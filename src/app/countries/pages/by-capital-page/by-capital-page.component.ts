@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'countries-by-capital-page',
@@ -7,12 +7,11 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class ByCapitalPageComponent implements OnInit {
 
-  @Output() onValue = new EventEmitter()
+  
 
-  searchByCapital( term: any): void {
+  searchByCapital( term: string): void {
     console.log("desde by capital page");
     console.log({ term });
-    this.onValue.emit(term)
   }
 
   constructor() { }
