@@ -1,5 +1,6 @@
-<div class="center-xs" *ngIf="countries.length === 0; else table">
+<div class="center-xs mt-4" *ngIf="countries.length === 0; else table">
     <img src="assets/images/no_data.jpg" alt="" width="550">
+    <h3>No hay pases que mostrar</h3>
 </div>
 
 <ng-template #table>
@@ -9,7 +10,7 @@
                 <th>#</th>
                 <th>Icon</th>
                 <th>Bandera</th>
-                <th>Nombre</th>
+                <th>Pais</th>
                 <th>Capital</th>
                 <th>Población</th>
                 <th><b><i class="bi bi-info-circle" style="font-size: 18px;"></i></b></th>
@@ -20,7 +21,7 @@
                 <td>{{ i + 1 }}</td>
                 <td>{{ country.flag }}</td>
                 <td>
-                    <img [src]=" country.flags.svg " [alt]="country.name.common">
+                    <img [src]=" country.flags.svg " class="imgFlag" [alt]="country.name.common">
                 </td>
                 <td>{{ country.name.common }}</td>
                 <td>{{ country.capital }}</td>
