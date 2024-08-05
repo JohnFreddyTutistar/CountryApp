@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CountryService } from '../../services/countries.service';
+import { Country } from '../../interfaces/country';
 
 @Component({
   selector: 'app-country-page',
@@ -8,6 +9,9 @@ import { CountryService } from '../../services/countries.service';
   styleUrls: ['./country-page.component.scss'],
 })
 export class CountryPageComponent implements OnInit {
+
+  public country? : Country;
+
   constructor(
     private activatedRoute: ActivatedRoute,
     private countryService: CountryService,
@@ -22,11 +26,11 @@ export class CountryPageComponent implements OnInit {
 
   searchConutry(code: string) {
     this.countryService.searchCountryByAplphaCode(code).subscribe((country) => {
-      if(country === null){
-          return this.router.navigateByUrl('');
-      }
+      if( !country ) return this.router.navigateByUrl('');
 
-      console.log("Tenemos pais");
+      this.country = country
+
+      console.log("Tenemos pais", country);
       return;
     });
   }
